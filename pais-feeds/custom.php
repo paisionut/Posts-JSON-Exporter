@@ -5,7 +5,7 @@
  * Description: Export all WordPress posts to a JSON file.
  * Author: Pais Ionut
  * Author URI: https://www.linkedin.com/in/paisionut/
- * Version: 1.0.3
+ * Version: 1.0.4
  **/
 
 add_action( 'rest_api_init', 'custom_api_get_all_posts' );
@@ -13,7 +13,8 @@ add_action( 'rest_api_init', 'custom_api_get_all_posts' );
 function custom_api_get_all_posts() {
     register_rest_route( 'pais-feeds/v1', '/posts', array(
         'methods' => 'GET',
-        'callback' => 'custom_api_get_all_posts_callback'
+        'callback' => 'custom_api_get_all_posts_callback',
+        'permission_callback' => '__return_true'
     ));
 }
 
